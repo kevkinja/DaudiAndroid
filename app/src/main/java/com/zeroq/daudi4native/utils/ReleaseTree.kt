@@ -1,7 +1,7 @@
 package com.zeroq.daudi4native.utils
 
 import android.util.Log
-import com.crashlytics.android.Crashlytics
+import com.google.firebase.crashlytics.FirebaseCrashlytics
 import timber.log.Timber
 
 class ReleaseTree : Timber.Tree() {
@@ -10,9 +10,12 @@ class ReleaseTree : Timber.Tree() {
         if (priority == Log.VERBOSE || priority == Log.DEBUG) {
             return
         }
+            val crashlytics = FirebaseCrashlytics.getInstance()
 
         // push to firebase crash reporting
-        Crashlytics.logException(t)
-        Crashlytics.log(message)
+        if (t != null) {
+            crashlytics.recordException(t)
+        }
+        crashlytics.log(message)
     }
 }

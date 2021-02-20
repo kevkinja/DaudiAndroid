@@ -83,7 +83,7 @@ class TruckDetailActivity : BaseActivity() {
 
 
         /**
-         * hide keyboad
+         * hide keyboard
          * */
         window.setSoftInputMode(WindowManager.LayoutParams.SOFT_INPUT_STATE_HIDDEN)
 
